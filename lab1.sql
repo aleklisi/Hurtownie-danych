@@ -1,11 +1,23 @@
 --1. Utworzyć bazę danych [BAZA]
 
-CREATE DATABASE [BAZA];
+USE master;  
+GO  
 
+--Delete the baza database if it exists.  
+IF EXISTS(SELECT * from sys.databases WHERE name='BAZA')  
+BEGIN  
+    DROP DATABASE BAZA;  
+END
+
+CREATE DATABASE BAZA;
+GO
+
+USE BAZA
+GO
 --2. Przygotować zapytanie w SQL, tworzące pustą tabelę [Zamówienia] w [BAZA], która ma być potem wypełniona danymi pochodzącymi z pliku Excela
 
-CREATE TABLE [BAZA].[Zamówienia] (
-	RowID INT,
+CREATE TABLE [dbo].[Zamówienia] (
+	RowID INT PRIMARY KEY,
 	OrderID	INT,
 	OrderDate DATE,
 	OrderPriority VARCHAR(255),	
