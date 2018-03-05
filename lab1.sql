@@ -40,7 +40,7 @@ CREATE TABLE [dbo].[Zamowienia] (
 	ShipDate DATE,
 	PRIMARY KEY (RowID)
 	)
-
+GO
 --3. Otworzyć SQL Server Data Tools
 --a) Utworzyć nowy projekt: NEW > PROJECT > TEMPLATES > BUSINESS INTELLIGENCE > INTEGRATION SERVICES > INTEGRATION SERVICES PROJECT
 --b) W SOLUTION MANAGER > CONNECTION MANAGERS > NEW CONNECTION MANAGER; wybrać typ OLE DB; nacisnąć ADD...; nacisnąć NEW... i dodać połączenie z bazą [BAZA]
@@ -65,6 +65,7 @@ CREATE TABLE [dbo].[Zwroty] (
 	PRIMARY KEY (Status,OrderID),
 	FOREIGN KEY (OrderID) REFERENCES Zamowienia(OrderID)
 	)
+GO
 	
 CREATE TABLE [dbo].[Uzytkownicy] (
 	Region VARCHAR(255),
@@ -72,3 +73,4 @@ CREATE TABLE [dbo].[Uzytkownicy] (
 	PRIMARY KEY (Region,Manager),
 	FOREIGN KEY (Region) REFERENCES Zamowienia(Region)
 	)
+GO
