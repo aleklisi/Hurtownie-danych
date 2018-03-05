@@ -16,8 +16,8 @@ USE BAZA
 GO
 --2. Przygotować zapytanie w SQL, tworzące pustą tabelę [Zamówienia] w [BAZA], która ma być potem wypełniona danymi pochodzącymi z pliku Excela
 
-CREATE TABLE [dbo].[Zamówienia] (
-	RowID INT PRIMARY KEY,
+CREATE TABLE [dbo].[Zamowienia] (
+	RowID INT,
 	OrderID	INT,
 	OrderDate DATE,
 	OrderPriority VARCHAR(255),	
@@ -37,7 +37,9 @@ CREATE TABLE [dbo].[Zamówienia] (
 	ProductName	VARCHAR(1024),
 	ProductContainer VARCHAR(255),
 	ProductBaseMargin DECIMAL(3,2),
-	ShipDate DATE)
+	ShipDate DATE,
+	PRIMARY KEY (RowID)
+	)
 
 --3. Otworzyć SQL Server Data Tools
 --a) Utworzyć nowy projekt: NEW > PROJECT > TEMPLATES > BUSINESS INTELLIGENCE > INTEGRATION SERVICES > INTEGRATION SERVICES PROJECT
@@ -56,3 +58,17 @@ CREATE TABLE [dbo].[Zamówienia] (
 --n) Wykonać bloczek [Import danych z arkusza Excel]
 
 --4. W podobny sposób utworzyć i wypełnić w [BAZA] tabele [Zwroty] oraz [Użytkownicy]
+
+CREATE TABLE [dbo].[Zwroty] (
+	OrderID INT,
+	Status VARCHAR(255),
+	PRIMARY KEY (Status,OrderID),
+	FOREIGN KEY (OrderID) REFERENCES Zamowienia(OrderID)
+	)
+	
+CREATE TABLE [dbo].[Uzytkownicy] (
+	Region VARCHAR(255),
+	Manager VARCHAR(255),
+	PRIMARY KEY (Region,Manager),
+	FOREIGN KEY (Region) REFERENCES Zamowienia(Region)
+	)
