@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[DataZamowienia] (
 	);
 
 INSERT INTO [dbo].[DataZamowienia]
-	SELECT [IDzamówienia]
+	SELECT [IDzamowienia]
       ,Year([DataZamówienia])
       ,DATEPART(QUARTER, [DataZamówienia])
       ,month([DataZamówienia]) 
@@ -57,16 +57,7 @@ SELECT [IDproduktu]
 	  ,NULL
   FROM [BAZA].[dbo].[Produkty];
  go
- --Adres odbiorcy
-SELECT [Kraj]
-      ,[Region]
-      ,[Miasto]
-      ,[NazwaFirmy]
-  FROM [BAZA].[dbo].[AdresOdbiorcy];
--- Spedytorzy 
-  Select * from Spedytorzy;
-  
-  --Data Zamowienia
+ --Data Zamowienia
 
 SELECT [Rok]
       ,[Kawrtal]
@@ -74,4 +65,9 @@ SELECT [Rok]
       ,[Dzien]
   FROM [BAZA].[dbo].[DataZamowienia];
 --Produkty
-Select NazwaProduktu,NazwaKategorii from [dbo].[Produkty wg kategorii];
+Select NazwaProduktu,NazwaKategorii from [BAZA].[dbo].[Produkty wg kategorii];
+--Adres odbiorcy
+SELECT *
+  FROM [BAZA].[dbo].[AdresOdbiorcy];
+-- Spedytorzy 
+  Select * from [BAZA].[dbo].[Spedytorzy];
