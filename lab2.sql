@@ -42,3 +42,36 @@ SELECT [IDklienta]
   FROM [BAZA].[dbo].[Klienci];
   
  GO
+
+ CREATE TABLE [dbo].[ProduktyLab] (
+	IDproduktu INT,
+	NazwaProduktu VARCHAR(MAX),
+	Kategoria VARCHAR(MAX),
+	PRIMARY KEY ([IDproduktu])
+	);
+GO
+
+INSERT INTO [dbo].[ProduktyLab]
+SELECT [IDproduktu]
+      ,[NazwaProduktu]
+	  ,NULL
+  FROM [BAZA].[dbo].[Produkty];
+ go
+ --Adres odbiorcy
+SELECT [Kraj]
+      ,[Region]
+      ,[Miasto]
+      ,[NazwaFirmy]
+  FROM [BAZA].[dbo].[AdresOdbiorcy];
+-- Spedytorzy 
+  Select * from Spedytorzy;
+  
+  --Data Zamowienia
+
+SELECT [Rok]
+      ,[Kawrtal]
+      ,[Miesiac]
+      ,[Dzien]
+  FROM [BAZA].[dbo].[DataZamowienia];
+--Produkty
+Select NazwaProduktu,NazwaKategorii from [dbo].[Produkty wg kategorii];
