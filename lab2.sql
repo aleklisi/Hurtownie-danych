@@ -18,3 +18,27 @@ INSERT INTO [dbo].[DataZamowienia]
       ,day([DataZamówienia])   
 	  FROM [BAZA].[dbo].[Zamówienia]
 ;
+GO 
+
+USE BAZA
+GO
+
+CREATE TABLE [dbo].[AdresOdbiorcy] (
+	IDklienta nvarchar(20),
+	Kraj VARCHAR(MAX),
+	Region VARCHAR(MAX),
+	Miasto VARCHAR(MAX),
+	NazwaFirmy VARCHAR(MAX),
+	PRIMARY KEY (IDklienta)
+	);
+GO
+
+INSERT INTO [dbo].[AdresOdbiorcy]
+SELECT [IDklienta]
+      ,[Kraj]
+      ,[Region]
+      ,[Miasto]
+      ,[NazwaFirmy]
+  FROM [BAZA].[dbo].[Klienci];
+  
+ GO
